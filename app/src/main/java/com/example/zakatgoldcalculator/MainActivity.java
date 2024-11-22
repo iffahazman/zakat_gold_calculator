@@ -18,7 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etGoldWeight, etGoldPrice;
+    private EditText etGoldWeight, etGoldValue;
     private RadioGroup rgGoldType;
     private RadioButton rbKeep, rbWear;
     private Button btnCalculate, btnReset;
@@ -33,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Optional: Set the title of the ActionBar
+        // Set the title of the ActionBar
         getSupportActionBar().setTitle("Zakat Gold Calculator");
 
         // Initializing views
         etGoldWeight = findViewById(R.id.etGoldWeight);
-        etGoldPrice = findViewById(R.id.etGoldPrice);
+        etGoldValue = findViewById(R.id.etGoldValue);
         rgGoldType = findViewById(R.id.rgGoldType);
         rbKeep = findViewById(R.id.rbKeep);
         rbWear = findViewById(R.id.rbWear);
         btnCalculate = findViewById(R.id.btnCalculate);
-        btnReset = findViewById(R.id.btnReset);  // Add reference for Reset button
+        btnReset = findViewById(R.id.btnReset);
         tvResult = findViewById(R.id.tvResult);
 
         // Set click listener for the calculate button
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Get inputs from the user
                 String weightStr = etGoldWeight.getText().toString().trim();
-                String priceStr = etGoldPrice.getText().toString().trim();
+                String priceStr = etGoldValue.getText().toString().trim();
 
                 // Validate inputs
                 if (weightStr.isEmpty() || priceStr.isEmpty()) {
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                double goldWeight = 0, goldPrice = 0;
+                double goldWeight = 0, goldValue = 0;
 
                 // Validate that weight and price are numbers
                 try {
                     goldWeight = Double.parseDouble(weightStr);
-                    goldPrice = Double.parseDouble(priceStr);
+                    goldValue = Double.parseDouble(priceStr);
                 } catch (NumberFormatException e) {
                     // Show error if the input is not a valid number
                     Toast.makeText(MainActivity.this, "Please enter valid numbers for weight and price", Toast.LENGTH_SHORT).show();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Calculate total gold value
-                double totalGoldValue = goldWeight * goldPrice;
+                double totalGoldValue = goldWeight * goldValue;
 
                 // Calculate zakat payable
                 double goldMinusX = goldWeight - uruf;
@@ -92,13 +92,13 @@ public class MainActivity extends AppCompatActivity {
                     goldMinusX = 0; // No zakat payable if the result is less than zero
                 }
 
-                double zakatPayable = goldMinusX * goldPrice;
+                double zakatPayable = goldMinusX * goldValue;
                 double totalZakat = zakatPayable * 0.025; // Zakat is 2.5%
 
                 // Display result
                 String resultText = "Total Gold Value: RM" + totalGoldValue + "\n" +
                         "Gold Value that is Zakat Payable: RM" + zakatPayable + "\n" +
-                        "Total Zakat Payable: RM" + totalZakat;
+                        "Total Zakat: RM" + totalZakat;
                 tvResult.setText(resultText);
             }
         });
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Clear all input fields and reset the result
                 etGoldWeight.setText("");
-                etGoldPrice.setText("");
+                etGoldValue.setText("");
                 rgGoldType.clearCheck();
                 tvResult.setText("Results will be displayed here");
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to open the About page
     private void openAboutPage() {
-        // Start the About Activity 
+        // Start the About Activity
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
         startActivity(intent);
     }
