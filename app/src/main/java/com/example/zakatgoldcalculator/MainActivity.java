@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etGoldWeight, etGoldPrice;
     private RadioGroup rgGoldType;
     private RadioButton rbKeep, rbWear;
-    private Button btnCalculate;
+    private Button btnCalculate, btnReset;
     private TextView tvResult;
 
     @Override
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         rbKeep = findViewById(R.id.rbKeep);
         rbWear = findViewById(R.id.rbWear);
         btnCalculate = findViewById(R.id.btnCalculate);
+        btnReset = findViewById(R.id.btnReset);  // Add reference for Reset button
         tvResult = findViewById(R.id.tvResult);
 
         // Set click listener for the calculate button
@@ -59,8 +60,17 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                double goldWeight = Double.parseDouble(weightStr);
-                double goldPrice = Double.parseDouble(priceStr);
+                double goldWeight = 0, goldPrice = 0;
+
+                // Validate that weight and price are numbers
+                try {
+                    goldWeight = Double.parseDouble(weightStr);
+                    goldPrice = Double.parseDouble(priceStr);
+                } catch (NumberFormatException e) {
+                    // Show error if the input is not a valid number
+                    Toast.makeText(MainActivity.this, "Please enter valid numbers for weight and price", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Determine type of gold (keep or wear)
                 int uruf = 0; // Uruf value for calculation
@@ -90,6 +100,21 @@ public class MainActivity extends AppCompatActivity {
                         "Gold Value that is Zakat Payable: RM" + zakatPayable + "\n" +
                         "Total Zakat Payable: RM" + totalZakat;
                 tvResult.setText(resultText);
+            }
+        });
+
+        // Set click listener for the reset button
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear all input fields and reset the result
+                etGoldWeight.setText("");
+                etGoldPrice.setText("");
+                rgGoldType.clearCheck();
+                tvResult.setText("Results will be displayed here");
+
+                // Optionally, focus back on the first input field (gold weight)
+                etGoldWeight.requestFocus();
             }
         });
     }
@@ -127,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Zakat Gold Calculator");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this app: <https://github.com/iffahazman/Zakat-Gold-Calculator.git>");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this app: <https://github.com/iffahazman/zakat_gold_calculator.git>");
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 

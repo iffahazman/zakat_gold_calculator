@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Color -->
+    <color name="colorPrimary">#FFD700</color> <!-- Gold -->
+    <color name="colorPrimaryDark">#B8860B</color> <!-- Dark Gold -->
+    <color name="colorAccent">#FFD700</color> <!-- Gold for accent -->
+
+    <!-- Background and Text Colors -->
+    <color name="colorBackground">#FFFFFF</color> <!-- White background -->
+    <color name="colorTextPrimary">#000000</color> <!-- Black text -->
 </resources>
+
+
+

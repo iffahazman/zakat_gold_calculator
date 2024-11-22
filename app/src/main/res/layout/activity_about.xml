@@ -136,8 +136,8 @@
                 android:padding="8dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:autoLink="web"
-                android:lineSpacingExtra="2dp" />
+                android:lineSpacingExtra="2dp"
+                android:onClick="openGitHub" />
 
         </LinearLayout>
     </ScrollView>
