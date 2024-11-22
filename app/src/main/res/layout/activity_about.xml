@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAF9F6">
+
+    <!-- Toolbar at the very top -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:title="About"
+        android:titleTextColor="#FFFFFF"
+        android:elevation="4dp" />
+
+    <!-- ScrollView for the rest of the content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Add space between Toolbar and content -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Section Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developer Details"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="16dp"
+                android:gravity="center" />
+
+            <!-- Image -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/my_photo"
+                android:contentDescription="Developer Image"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Developer Information -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name            : Nik Nur'Iffah Nadhirah Binti Nik Azman"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="4dp"
+                android:lineSpacingExtra="2dp"
+                android:justificationMode="none" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Group            : CDCS2405A"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="4dp"
+                android:lineSpacingExtra="2dp"
+                android:justificationMode="none" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Student No.  : 2022605228"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="4dp"
+                android:lineSpacingExtra="2dp"
+                android:justificationMode="none" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prog Code    : CS240"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="4dp"
+                android:lineSpacingExtra="2dp"
+                android:justificationMode="none" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email             : iffahnadhirah3@gmail.com"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="16dp"
+                android:lineSpacingExtra="2dp"
+                android:justificationMode="none" />
+
+            <!-- App Description -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Zakat Gold Calculator app is designed to help users calculate their zakat obligations for gold keeping. It simplifies the calculation process, ensuring accuracy and compliance with Islamic principles. This user-friendly tool is especially helpful for individuals managing gold assets."
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="24dp"
+                android:lineSpacingExtra="4dp"
+                android:justificationMode="inter_word" />
+
+            <!-- Copyright -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2024 Zakat Gold Calculator. All rights reserved."
+                android:textColor="#757575"
+                android:textSize="14sp"
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:justificationMode="inter_word" />
+
+            <!-- Clickable URL -->
+            <TextView
+                android:id="@+id/tvWebsite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visit my GitHub page"
+                android:textColor="#1E88E5"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:autoLink="web"
+                android:lineSpacingExtra="2dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
