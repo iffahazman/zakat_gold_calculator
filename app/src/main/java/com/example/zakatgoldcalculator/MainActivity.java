@@ -156,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 
-    // Method to open the About page (you need to create AboutActivity)
+    // Method to open the About page
     private void openAboutPage() {
-        // Start the About Activity (assuming you have an AboutActivity)
+        // Start the About Activity 
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
         startActivity(intent);
     }
